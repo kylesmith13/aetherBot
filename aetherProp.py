@@ -1,3 +1,4 @@
+import config
 import json
 import config
 from web3 import Web3
@@ -29,8 +30,8 @@ def __fetchDataAtProgress(_propertyId, _progress):
 
     # we need to make available the functionality we would like to draw from the contract. 
     # the abi could contain all functionality, but its not necessary
-    abi = json.loads('[{\"constant\":true,\"inputs\":[{\"name\":\"_id\",\"type\":\"uint256\"}],\"name\":\"getProperty\",\"outputs\":[{\"name\":\"parent\",\"type\":\"uint32\"},{\"name\":\"class\",\"type\":\"uint8\"},{\"name\":\"x\",\"type\":\"uint8\"},{\"name\":\"y\",\"type\":\"uint8\"},{\"name\":\"z\",\"type\":\"uint8\"},{\"name\":\"dx\",\"type\":\"uint8\"},{\"name\":\"dz\",\"type\":\"uint8\"},{\"name\":\"height\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]')
-    address = '0x31d4C5be1082A88F2ABAFeA549B6C189C2cf057F'
+    abi = json.loads(config.contract_abi)
+    address = config.contract_address
 
     contract = web3.eth.contract(address=address, abi=abi)
 
@@ -38,7 +39,6 @@ def __fetchDataAtProgress(_propertyId, _progress):
     # these values are parent (district?), class, x, y, z, dx, dz, height respectively
     properties = ['parent', 'class', 'x', 'y', 'z', 'width', 'length', 'height']
     propertyNumber = int(_propertyId)
-    progress = int(_progress)
 
     data = contract.functions.getProperty(propertyNumber).call()
     return dict(zip(properties, data))
