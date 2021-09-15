@@ -2,14 +2,13 @@ import json
 import config
 from web3 import Web3
 
-def computeRooms(_propertyId, _progress):
+def computeInfo(_propertyId, _progress):
     data = __fetchDataAtProgress(_propertyId, _progress)
     height = __computeHeightAtProgress(data['x'], data['z'], data['height'], _progress)
-    return (data['width'] * data['length']) * (round(height) - 1)
+    return {'rooms': __rooms(data, height), 'floors': height}
 
-def computeHeight(_propertyId, _progress):
-    data = __fetchDataAtProgress(_propertyId, _progress)
-    return __computeHeightAtProgress(data['x'], data['z'], data['height'], _progress)
+def __rooms(_data, _height):
+    return (_data['width'] * _data['length']) * (round(_height) - 1)
 
 # this is a private function from the contract that i've recreated to be able to use
 def __computeHeightAtProgress(_x, _z, _height, progress):
