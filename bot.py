@@ -6,14 +6,15 @@ bot = commands.Bot(command_prefix="$")
 
 @bot.command()
 async def propertyFloorCount(ctx, propertyId, progress):
-    floors = round(aetherProp.computeHeight(int(propertyId), int(progress)))
+    data = aetherProp.computeInfo(int(propertyId), int(progress))
+    floors = round(data['floors'])
     response = "Property " + str(propertyId) + " will have " + str(floors) + " floors at progress " + progress + "."
     await ctx.channel.send(response)
 
 @bot.command()
 async def propertyRoomCount(ctx, propertyId, progress):
     data = aetherProp.computeInfo(int(propertyId), int(progress))
-    rooms = round(data[''])
+    rooms = round(data['rooms'])
     response = "Property " + str(propertyId) + " will have " + str(rooms) + " rooms at progress " + progress + "."
     await ctx.channel.send(response)
 
