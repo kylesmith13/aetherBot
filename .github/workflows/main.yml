@@ -16,9 +16,10 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          infura_token: ${{secrets.INFURA_TOKEN}}
-          token: ${{secrets.TOKEN}}
           heroku_app_name: "aether-discord-bot" 
           heroku_email: "k.kyle.smith13@gmail.com"
           usedocker: true
+        env:
+          infura_token: ${{secrets.INFURA_TOKEN}}
+          token: ${{secrets.TOKEN}}
       
