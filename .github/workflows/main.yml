@@ -18,9 +18,5 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "aether-discord-bot" 
           heroku_email: "k.kyle.smith13@gmail.com"
-          dockerfile_directory: ./
-          dockerfile_name: Dockerfile
-          docker_options: "--no-cache"
-
           usedocker: true
       
