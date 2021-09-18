@@ -1,4 +1,5 @@
 import config
+import math
 import json
 import config
 from web3 import Web3
@@ -9,7 +10,7 @@ def computeInfo(_propertyId, _progress):
     return {'rooms': __rooms(data, height), 'floors': height}
 
 def __rooms(_data, _height):
-    return (_data['width'] * _data['length']) * (round(_height) - 1)
+    return (_data['width'] * _data['length']) * (math.floor(_height) - 1)
 
 # this is a private function from the contract that i've recreated to be able to use
 def __computeHeightAtProgress(_x, _z, _height, progress):
@@ -42,3 +43,7 @@ def __fetchDataAtProgress(_propertyId, _progress):
 
     data = contract.functions.getProperty(propertyNumber).call()
     return dict(zip(properties, data))
+
+
+def buildRankingsAtProgress(progress):
+    return

@@ -11,15 +11,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        
       - name: Heroku Deploy
         uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "aether-discord-bot" 
           heroku_email: "k.kyle.smith13@gmail.com"
+          dockerfile_directory: ./
+          dockerfile_name: Dockerfile
+          docker_options: "--no-cache"
+
           usedocker: true
-      - name: Run Script
-        run:
-          using: 'docker'
-          image: 'Dockerfile'
       
