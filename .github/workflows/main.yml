@@ -19,7 +19,10 @@ jobs:
           heroku_app_name: "aether-discord-bot" 
           heroku_email: "k.kyle.smith13@gmail.com"
           usedocker: true
+          docker_build_args: |
+            INFURA_TOKEN
+            TOKEN
         env:
-          infura_token: ${{secrets.INFURA_TOKEN}}
-          token: ${{secrets.TOKEN}}
+          INFURA_TOKEN: ${{secrets.INFURA_TOKEN}}
+          TOKEN: ${{secrets.TOKEN}}
       
