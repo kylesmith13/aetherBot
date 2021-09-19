@@ -12,9 +12,9 @@ async def propertyInfo(ctx, propertyId, progress):
 
     embedObj = discord.Embed(color=0x00ff00)
     embedObj.set_footer(text=config.footer)
-    if prog > 100 or prog < 15:
+    if prog > 50 or prog < 15:
         embedObj.title = 'Error'
-        embedObj.add_field(name='Message', value='Progress needs to be between 15 and 100!')
+        embedObj.add_field(name='Message', value='Progress needs to be between 15 and 50!')
     elif propId < 16 or propId > 119:
         embedObj.title = 'Error'
         embedObj.add_field(name='Message', value='Currently property values are between 16-119, try again with one of these numbers!')
