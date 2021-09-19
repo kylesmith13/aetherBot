@@ -29,6 +29,4 @@ async def propertyInfo(ctx, propertyId, progress):
     await ctx.channel.send(embed=embedObj)
 
 bot.run(config.token)
-
-# handle messages for !propertyRoomCount and !propertyFloorCount
-# propertyRoomCount will be the dimensions of the property (2x4) * (floorCount - 1)
+print("Bot ready...")
