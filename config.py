@@ -1,5 +1,6 @@
 import os
 
+print(os.environ)
 token = os.environ['TOKEN']
 infura_token = os.environ['INFURA_TOKEN']
 contract_address = '0x31d4C5be1082A88F2ABAFeA549B6C189C2cf057F'
